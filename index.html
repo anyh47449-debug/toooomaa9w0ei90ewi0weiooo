@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Birthday Tribute - Toma</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+    <!-- New Fonts for Games Page -->
+    <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&family=Noto+Sans+Arabic:wght@400;700&display=swap" rel="stylesheet"/>
+    <!-- New Fonts for Teasing Page -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Reem+Kufi:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    
+    <!-- Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#d946ef",
+              "background-light": "#f3e8ff",
+              "background-dark": "#0f0518",
+              "glass-dark": "rgba(20, 10, 30, 0.6)",
+              "glass-border": "rgba(255, 255, 255, 0.1)",
+              // Games Page Specific Colors
+              "game-primary": "#ffee00",
+              "game-dark": "#1f082b",
+              // Rhythm Game Colors
+              "neon-pink": "#ff2a6d",
+              "neon-purple": "#d300c5",
+              "neon-cyan": "#05d9e8",
+              "neon-yellow": "#f7f016",
+              "glass-surface": "rgba(255, 255, 255, 0.05)",
+              // Teasing Page
+              nebula: {
+                  deep: "#0a0118",
+                  purple: "#2d0a4e",
+                  pink: "#4e0a3d"
+              }
+            },
+            fontFamily: {
+              sans: ["Cairo", "sans-serif"],
+              serif: ["Playfair Display", "serif"],
+              display: ["Spline Sans", "Noto Sans Arabic", "sans-serif"],
+              arabic: ["Reem Kufi", "sans-serif"],
+              amiri: ["Amiri", "serif"],
+            },
+            backgroundImage: {
+                'cosmic-gradient': 'radial-gradient(circle at 50% 0%, #4c1d95 0%, #1f082b 40%, #0f0214 100%)',
+                'card-gradient': 'linear-gradient(180deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)',
+                'track-gradient': 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(76, 29, 149, 0.4) 40%, rgba(211, 0, 197, 0.2) 100%)',
+                'disco-grid': 'linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px)',
+            },
+            animation: {
+              'float': 'float 6s ease-in-out infinite',
+              'float-delayed': 'float 6s ease-in-out 3s infinite',
+              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'blob': "blob 7s infinite",
+              'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
+              'float-note': 'float-note 3s linear infinite',
+              'beat-pulse': 'beat 0.5s ease-in-out infinite alternate',
+            },
+            keyframes: {
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-20px)' },
+              },
+              blob: {
+                "0%": { transform: "translate(0px, 0px) scale(1)" },
+                "33%": { transform: "translate(30px, -50px) scale(1.1)" },
+                "66%": { transform: "translate(-20px, 20px) scale(0.9)" },
+                "100%": { transform: "translate(0px, 0px) scale(1)" }
+              },
+              'pulse-glow': {
+                  '0%, 100%': { opacity: 0.6, boxShadow: '0 0 20px currentColor' },
+                  '50%': { opacity: 1, boxShadow: '0 0 40px currentColor' },
+              },
+              'beat': {
+                  '0%': { transform: 'scale(1)' },
+                  '100%': { transform: 'scale(1.1)' },
+              }
+            }
+          },
+        },
+      };
+    </script>
+
+    <style>
+      /* Custom Glassmorphism & Effects */
+      .glass-card {
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      }
+      
+      .glass-pill {
+        background: rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .bg-spotlight {
+        background: radial-gradient(circle at 50% 0%, rgba(126, 34, 206, 0.4) 0%, rgba(15, 5, 24, 0) 60%),
+                    radial-gradient(circle at 10% 90%, rgba(217, 70, 239, 0.15) 0%, rgba(15, 5, 24, 0) 40%);
+      }
+
+      .text-glow {
+        text-shadow: 0 0 10px rgba(217, 70, 239, 0.5);
+      }
+
+      /* Scrollbar hiding for cleaner UI */
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    </style>
+
+<link rel="stylesheet" href="/index.css">
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/"
+  }
+}
+</script>
+  <script type="module" crossorigin src="/assets/index-C9L5CQIX.js"></script>
+</head>
+  <body class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-100 font-sans min-h-screen overflow-x-hidden selection:bg-primary selection:text-white">
+    <div id="root"></div>
+</body>
+</html>
